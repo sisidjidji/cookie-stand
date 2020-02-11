@@ -8,7 +8,7 @@ var storesArray=[];
 
 
 
- function store(name,min,max,avg) { // creating a constructor function 
+ function Store(name,min,max,avg) { // creating a constructor function 
    this.name=name;
    this.min=min;
    this.max=max;
@@ -20,44 +20,44 @@ var storesArray=[];
 }
  
 
-store.prototype.setcookies=function() { // set a prototype function that gonna return an array  of rundom numbers of cookies sold per hour
+Store.prototype.setcookies=function() { // set a prototype function that gonna return an array  of rundom numbers of cookies sold per hour
    for (var i=0;i<14;i++){
       this.cookiesHour[i]=getRandomInt(this.min, this.max,this.avg);
       
               }
              }
              
-store.prototype.setTotal= function(){// set a prototype function that gonna return a total cookies sold per day
+Store.prototype.setTotal= function(){// set a prototype function that gonna return a total cookies sold per day
    for (var i=0;i<14;i++){
 
-      this.dailyTotal+=this.cookiesHour[i];
+      this.dailyTotal+=this.cookiesHour[i];// sum the number cookies per hour 
               }
   }
 
-store.prototype.dataRender=function(){
+Store.prototype.dataRender=function(){ // Render function for body element 
 
-   var storesArray=[];
-   var tbody=document.getElementById('table-body');
-   var tr=document.createElement('tr');
-      tbody.appendChild(tr);
+   var storeTable=document.getElementById('storeTable');
+   var tbody=document.createElement('tbody');// create the tbody element 
+   tbody.setAttribute('id', 'table-body');// give tbody an id 
+   storeTable.appendChild(tbody); // appendchild t body to the storetable
+   var tr=document.createElement('tr');//creating a tr element
+      tbody.appendChild(tr);// appendchild it to the body
 
-   var td=document.createElement('td');
-     td.textContent=this.name;
-     tr.appendChild(td);
+   var td=document.createElement('td');// Creating td element for the name of the stores
+       td.textContent=this.name; //
+       tr.appendChild(td);
 
-     for (var i=0;i<this.cookiesHour.length;i++){
+     for (var i=0;i<this.cookiesHour.length;i++){ // loop to create tds that contain the number of cookies per hour 
       var td=document.createElement('td');
           td.textContent=this.cookiesHour[i];
           tr.appendChild(td);
 
      }
 
-     td=document.createElement('td');
+     td=document.createElement('td'); // creating a td for the total of cookies sold per hour for each store
      td.textContent=this.dailyTotal;
      tr.appendChild(td);
 
-
-      
       }
    
 
@@ -67,29 +67,29 @@ store.prototype.dataRender=function(){
               }
 
  createHeader();
- createBody();
 
-var store1= new store('Seattle','23','65','6.3');  // creating new instance of store named store1
+
+var store1= new Store('Seattle','23','65','6.3');  // creating new instance of store named store1
 store1.setcookies(); // call the function setcokies
-store1.setTotal(); 
+store1.setTotal();  // call function settotal that sum the number of cookies sold per hour 
 store1.dataRender(); // call the function setTotal
 storesArray.push(store1);
-var store2= new store('Tokyo','3','24','1.2');// creating new instance of store named store2
+var store2= new Store('Tokyo','3','24','1.2');// creating new instance of store named store2
 store2.setcookies();
 store2.setTotal();
 store2.dataRender();
 storesArray.push(store2);
-var store3= new store('Dubai','11','38','3.7');// creating new instance of store named store3
+var store3= new Store('Dubai','11','38','3.7');// creating new instance of store named store3
 store3.setcookies();
 store3.setTotal();
 store3.dataRender();
 storesArray.push(store3);
-var store4= new store('Paris','20','38','2.3');// creating new instance of store named store4
+var store4= new Store('Paris','20','38','2.3');// creating new instance of store named store4
 store4.setcookies();
 store4.setTotal();
 store4.dataRender();
 storesArray.push(store4);
-var store5= new store('Lima','2','16','4.6');// creating new instance of store named store5
+var store5= new Store('Lima','2','16','4.6');// creating new instance of store named store5
 store5.setcookies();
 store5.setTotal();
 store5.dataRender();
@@ -115,85 +115,53 @@ createFooter();
       //var article = document.createElement('article');// creating the article element
      // parentElement.appendChild(article);
 
-     function createHeader(){
+     function createHeader(){ // function for the header element 
 
       var storeTable=document.getElementById('storeTable');
-      var thead=document.createElement('thead');
-           storeTable.appendChild(thead);
+      var thead=document.createElement('thead');// creating the thead element 
+           storeTable.appendChild(thead); // appendchild the thead element to the table 
       var tr=document.createElement('tr');
           thead.appendChild(tr);
          
-      var th=document.createElement('th');
+      var th=document.createElement('th'); // creating an empty th element 
           tr.appendChild(th);
 
-          for (var i=0;i<time.length;i++){
+          for (var i=0;i<time.length;i++){// loop to create the th element for each hour 
 
             th=document.createElement('th');
             th.textContent=time[i];
             tr.appendChild(th);
          }
-         
-
-
      }
     
-     function createFooter(){
+     function createFooter(){// footer function 
       var storeTable=document.getElementById('storeTable');
-      var tfooter=document.createElement('tfooter');
-      tfooter.setAttribute('id', 'table-footer');
+      var tfooter=document.createElement('tfoot');// creating the footer element 
+      tfooter.setAttribute('id', 'table-footer');// give the tfoot an id named table-footer
       storeTable.appendChild(tfooter);
       var tfooter=document.getElementById('table-footer');
-      var tr=document.createElement('tr');
-          tfooter.appendChild(tr);
-      var td=document.createElement('td');
-          td.textContent='Total';
-          tr.appendChild(td);
+      var tr=document.createElement('tr');// creating a tr element 
+          tfooter.appendChild(tr);// appendchild tr to the footer
+      var td=document.createElement('td');// create td element 
+          td.textContent='Total';// td take a value total 
+          tr.appendChild(td);// appendchild td to tr
 
        console.log(storesArray);
-
-       for (var x=-0;x<=time.length;x++)
-       
+       var total=0;
+       for (var x=-0;x<time.length-1;x++)// loop through the time array 
        {
-         var td=document.createElement('td');
-
-            for(var i=0;i<=storesArray.length;i=i+2){
-
-              var sum=0;
-              
-               sum=sum+ storesArray[i].cookiesHour[x]+storesArray[i+1].cookiesHour[x];
-               
+          td=document.createElement('td');// create a td element 
+           var sum=0;
+            for(var i=0;i<storesArray.length;i++){// loop through the strore array 
+               sum=sum+ storesArray[i].cookiesHour[x];// sum the number of cookies sold per hour for each store 
                   }        
-                  td.textContent=sum;
+                  td.textContent=sum; // td take the value sum 
+                  tr.appendChild(td);// appendchild td to tr  
+                  total+=sum;// sum the total of the totals for  all stores 
 
-                  tr.appendChild(td);
         }
+        td=document.createElement('td');// create  td 
+        td.textContent=total;// td take the value total
+        tr.appendChild(td);// ppendchild td to the tr 
       }
       
-     
-
-      //     f{
-      //       var storeTable=document.getElementById('storeTable');
-      //       var td=document.createElement('td');
-      //       var rows =storeTable.rows
-      //       var cells= storeTable.cells
-            
-      //       for(var x=0;x<rows.length;i++)
-      //       {
-      //       var total=0;
-      //       var cells = rows[x].cells[i];
-      //       total += cells.textContent ;
-            
-      //   }
-      //       td.textContent=total
-      //     tr.appendChild(td);
-      //     }
-     
-       
-
-     function createBody(){
-      var storeTable=document.getElementById('storeTable');
-      var tbody=document.createElement('tbody');
-      tbody.setAttribute('id', 'table-body');
-      storeTable.appendChild(tbody); 
-
-     }
