@@ -14,11 +14,19 @@ table,th,td{
 
 img {
 
-width: 300px;
+width: 200px;
+display: block;
+margin: auto;
+padding: 50px;
 
 }
 
 td {
 
     padding: 10px;
+}
+table{
+
+    text-align: center;
+    margin:auto;
 }
