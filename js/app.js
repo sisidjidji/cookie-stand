@@ -2,15 +2,15 @@
 
 var storesArray=[];
 // array that store the objects 
- var time= ['6am ','7am ','8am ','9am ','10am ','11am ','12am ','1pm ','2pm ','3pm ','4pm ','5pm ','6pm ','7pm ','Total'];
+var time= ['6am ','7am ','8am ','9am ','10am ','11am ','12am ','1pm ','2pm ','3pm ','4pm ','5pm ','6pm ','7pm ','Total'];
 
 
 
 
 
- function Store(name,min,max,avg) { // creating a constructor function 
-   this.name=name;
-   this.min=min;
+function Store(name,min,max,avg) { // creating a constructor function 
+this.name=name;
+this.min=min;
    this.max=max;
    this.avg=avg;
    this.cookiesHour=[];
@@ -61,7 +61,7 @@ Store.prototype.dataRender=function(){ // Render function for body element
       }
    
 
- function getRandomInt(min, max,avg)  {      // Fonction that return a rundom number of cookies sold per hours
+ function getRandomInt(min, max,avg) {// Fonction that return a rundom number of cookies sold per hours
                 return Math.floor((Math.random() * (max-min) + min) * avg);
                 
               }
@@ -71,7 +71,7 @@ Store.prototype.dataRender=function(){ // Render function for body element
 
 var store1= new Store('Seattle','23','65','6.3');  // creating new instance of store named store1
 store1.setcookies(); // call the function setcokies
-store1.setTotal();  // call function settotal that sum the number of cookies sold per hour 
+store1.setTotal(); // call function settotal that sum the number of cookies sold per hour 
 store1.dataRender(); // call the function setTotal
 storesArray.push(store1);
 var store2= new Store('Tokyo','3','24','1.2');// creating new instance of store named store2
@@ -100,39 +100,27 @@ createFooter();
 
 
 
- /////// ////////// ////////////////////////////// DOM Element//////////////////////////////////////////////////////////////
-
-     var parentElement= document.getElementById('parentElement');// creating a  variable parentElement that represent the id of the section element
-     var h1 = document.createElement('h1');  //creating a h1 element
-      h1.textContent = ' Welcome To The Salmon Cookie Store  ';
-      parentElement.appendChild(h1); 
+/////// ////////// ////////////////////////////// DOM Element//////////////////////////////////////////////////////////////
 
 
-      var logo = document.createElement('img'); //creating img element
-      logo.setAttribute('src', 'images/salmon.png'); // adding the source 
-      parentElement.appendChild(logo);
-  
-      //var article = document.createElement('article');// creating the article element
-     // parentElement.appendChild(article);
+function createHeader(){ // function for the header element 
 
-     function createHeader(){ // function for the header element 
+var storeTable=document.getElementById('storeTable');
+var thead=document.createElement('thead');// creating the thead element 
+storeTable.appendChild(thead); // appendchild the thead element to the table 
+var tr=document.createElement('tr');
+thead.appendChild(tr);
 
-      var storeTable=document.getElementById('storeTable');
-      var thead=document.createElement('thead');// creating the thead element 
-           storeTable.appendChild(thead); // appendchild the thead element to the table 
-      var tr=document.createElement('tr');
-          thead.appendChild(tr);
-         
-      var th=document.createElement('th'); // creating an empty th element 
-          tr.appendChild(th);
+var th=document.createElement('th'); // creating an empty th element 
+tr.appendChild(th);
 
-          for (var i=0;i<time.length;i++){// loop to create the th element for each hour 
+for (var i=0;i<time.length;i++){// loop to create the th element for each hour 
 
-            th=document.createElement('th');
-            th.textContent=time[i];
-            tr.appendChild(th);
-         }
-     }
+th=document.createElement('th');
+th.textContent=time[i];
+tr.appendChild(th);
+}
+}
     
      function createFooter(){// footer function 
       var storeTable=document.getElementById('storeTable');
@@ -163,5 +151,5 @@ createFooter();
         td=document.createElement('td');// create  td 
         td.textContent=total;// td take the value total
         tr.appendChild(td);// ppendchild td to the tr 
-      }
-      
+}
+

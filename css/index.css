@@ -1,0 +1,107 @@
+h1{
+    color: brown;
+    display: inline-block;
+    font-family: 'Anton', sans-serif;
+    margin-top: 40px;
+    
+    
+}
+ul li{
+margin-top: 20px ;
+    float :right;
+    border-radius: 10px;
+    background-color: burlywood;
+    height: 30px;
+    text-align: center;
+    font-family: 'Lacquer', sans-serif;
+
+  
+
+}
+a{
+
+
+margin:50px;
+padding: 40px;
+color : brown;  
+}
+ ul li a:hover{
+
+    background-color:white;
+    height: 30px;
+ }
+ 
+ header img {
+
+    
+    width: 150px ;
+    margin-top: 0px;
+    padding: 20px;
+    float: left;
+  
+   
+ }
+ .family{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    width: 50%;
+    
+ }
+p{ 
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Lacquer', sans-serif;
+}
+#second{
+
+    margin-top: 150px;
+    text-align: left;
+    font-family: 'Lacquer', sans-serif;
+    
+}
+.cookie1{
+margin: 70px;   
+height: 300px;
+width: 300;
+padding: 20px;
+float: left;
+  
+}
+
+
+
+
+.cookie2{
+    margin-top: 600px;  
+}
+
+.cookie1{
+float:right;
+}
+
+table{
+
+    margin-top: 150px;
+}
+table,tr ,td{
+    
+ padding: 20px;
+ text-align: justify;
+  
+
+}
+
+table td img{
+padding: 0px;
+    height: 40px;
+    width: 60px;
+  
+}
+th{
+
+    color: brown;
+    font-family: 'Anton', sans-serif;
+    text-align: center;
+}

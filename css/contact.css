@@ -2,7 +2,7 @@ h1{
     color: brown;
     display: inline-block;
     font-family: 'Anton', sans-serif;
-    margin-top: 100px;
+    margin-top: 40px;
     
     
 }
@@ -38,25 +38,29 @@ color : brown;
     margin-top: 0px;
     padding: 20px;
     float: left;
-  
-   
- }
+}
 
-table,th,td{
+table{
 
-    border: 1px solid black;
-    margin-top: 50px;
+    margin-top: 150px;
+}
+table,tr ,td{
     
-}
-
-img {
-
-width: 300px;
+ padding: 20px;
+ text-align: justify;
+  
 
 }
 
-td {
-
-    padding: 10px;
+table td img{
+padding: 0px;
+    height: 40px;
+    width: 60px;
+  
 }
+th{
 
+    color: brown;
+    font-family: 'Anton', sans-serif;
+    text-align: center;
+}
