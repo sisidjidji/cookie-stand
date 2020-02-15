@@ -9,57 +9,57 @@ var time = ['6am ', '7am ', '8am ', '9am ', '10am ', '11am ', '12am ', '1pm ', '
 
 
 function Store(name, min, max, avg) { // creating a constructor function 
-   this.name = name;
-   this.min = min;
-   this.max = max;
-   this.avg = avg;
-   this.cookiesHour = [];
-   this.dailyTotal = 0;
+  this.name = name;
+  this.min = min;
+  this.max = max;
+  this.avg = avg;
+  this.cookiesHour = [];
+  this.dailyTotal = 0;
 
 }
 
 Store.prototype.setcookies = function () { // set a prototype function that gonna return an array  of rundom numbers of cookies sold per hour
-   for (var i = 0; i < 14; i++) {
-      this.cookiesHour[i] = getRandomInt(this.min, this.max, this.avg);
-   }
+  for (var i = 0; i < 14; i++) {
+    this.cookiesHour[i] = getRandomInt(this.min, this.max, this.avg);
+  }
 }
 
 Store.prototype.setTotal = function () {// set a prototype function that gonna return a total cookies sold per day
-   for (var i = 0; i < 14; i++) {
+  for (var i = 0; i < 14; i++) {
 
-      this.dailyTotal += this.cookiesHour[i];// sum the number cookies per hour 
-   }
+    this.dailyTotal += this.cookiesHour[i];// sum the number cookies per hour 
+  }
 }
 
 Store.prototype.dataRender = function () { // Render function for body element 
 
-   var storeTable = document.getElementById('storeTable');
-   var tbody = document.createElement('tbody');// create the tbody element 
-   tbody.setAttribute('id', 'table-body');// give tbody an id 
-   storeTable.appendChild(tbody); // appendchild t body to the storetable
-   var tr = document.createElement('tr');//creating a tr element
-   tbody.appendChild(tr);// appendchild it to the body
+  var storeTable = document.getElementById('storeTable');
+  var tbody = document.createElement('tbody');// create the tbody element 
+  tbody.setAttribute('id', 'table-body');// give tbody an id 
+  storeTable.appendChild(tbody); // appendchild t body to the storetable
+  var tr = document.createElement('tr');//creating a tr element
+  tbody.appendChild(tr);// appendchild it to the body
 
-   var td = document.createElement('td');// Creating td element for the name of the stores
-   td.textContent = this.name; //
-   tr.appendChild(td);
+  var td = document.createElement('td');// Creating td element for the name of the stores
+  td.textContent = this.name; //
+  tr.appendChild(td);
 
-   for (var i = 0; i < this.cookiesHour.length; i++) { // loop to create tds that contain the number of cookies per hour 
-      var td = document.createElement('td');
-      td.textContent = this.cookiesHour[i];
-      tr.appendChild(td);
+  for (var i = 0; i < this.cookiesHour.length; i++) { // loop to create tds that contain the number of cookies per hour 
+    var td = document.createElement('td');
+    td.textContent = this.cookiesHour[i];
+    tr.appendChild(td);
 
-   }
+  }
 
-   td = document.createElement('td'); // creating a td for the total of cookies sold per hour for each store
-   td.textContent = this.dailyTotal;
-   tr.appendChild(td);
+  td = document.createElement('td'); // creating a td for the total of cookies sold per hour for each store
+  td.textContent = this.dailyTotal;
+  tr.appendChild(td);
 
 }
 
 
 function getRandomInt(min, max, avg) {// Fonction that return a rundom number of cookies sold per hours
-   return Math.floor((Math.random() * (max - min) + min) * avg);
+  return Math.floor((Math.random() * (max - min) + min) * avg);
 }
 
 createHeader();
@@ -101,93 +101,94 @@ createFooter();
 
 function createHeader() { // function for the header element 
 
-   var storeTable = document.getElementById('storeTable');
-   var thead = document.createElement('thead');// creating the thead element 
-   storeTable.appendChild(thead); // appendchild the thead element to the table 
-   var tr = document.createElement('tr');
-   thead.appendChild(tr);
+  var storeTable = document.getElementById('storeTable');
+  var thead = document.createElement('thead');// creating the thead element 
+  storeTable.appendChild(thead); // appendchild the thead element to the table 
+  var tr = document.createElement('tr');
+  thead.appendChild(tr);
 
-   var th = document.createElement('th'); // creating an empty th element 
-   tr.appendChild(th);
+  var th = document.createElement('th'); // creating an empty th element 
+  tr.appendChild(th);
 
-   for (var i = 0; i < time.length; i++) {// loop to create the th element for each hour 
+  for (var i = 0; i < time.length; i++) {// loop to create the th element for each hour 
 
-      th = document.createElement('th');
-      th.textContent = time[i];
-      tr.appendChild(th);
-   }
+    th = document.createElement('th');
+    th.textContent = time[i];
+    tr.appendChild(th);
+  }
 }
 
 function createFooter() {// footer function 
-   var storeTable = document.getElementById('storeTable');
-   var tfooter = document.createElement('tfoot');
-   tfooter.setAttribute('id', 'table-footer');// give the tfoot an id named table-footer
-   storeTable.appendChild(tfooter);
-   tfooter = document.getElementById('table-footer');
+  var storeTable = document.getElementById('storeTable');
+  var tfooter = document.createElement('tfoot');
+  tfooter.setAttribute('id', 'table-footer');// give the tfoot an id named table-footer
+  storeTable.appendChild(tfooter);
+  tfooter = document.getElementById('table-footer');
 
-   var tr = document.createElement('tr');// creating a tr element 
-   tfooter.appendChild(tr);// appendchild tr to the footer
-   var td = document.createElement('td');// create td element 
-   td.textContent = 'Total';// td take a value total 
-   tr.appendChild(td);// appendchild td to tr
+  var tr = document.createElement('tr');// creating a tr element 
+  tfooter.appendChild(tr);// appendchild tr to the footer
+  var td = document.createElement('td');// create td element 
+  td.textContent = 'Total';// td take a value total 
+  tr.appendChild(td);// appendchild td to tr
 
-   console.log(storesArray);
-   var total = 0;
-   for (var x = -0; x < time.length - 1; x++)// loop through the time array 
-   {
-      td = document.createElement('td');// create a td element 
-      var sum = 0;
-      for (var i = 0; i < storesArray.length; i++) {// loop through the strore array 
-         sum = sum + storesArray[i].cookiesHour[x];// sum the number of cookies sold per hour for each store 
-      }
-      td.textContent = sum; // td take the value sum 
-      tr.appendChild(td);// appendchild td to tr  
-      total += sum;// sum the total of the totals for  all stores 
+  console.log(storesArray);
+  var total = 0;
+  for (var x = -0; x < time.length - 1; x++)// loop through the time array 
+  {
+    td = document.createElement('td');// create a td element 
+    var sum = 0;
+    for (var i = 0; i < storesArray.length; i++) {// loop through the strore array 
+      sum = sum + storesArray[i].cookiesHour[x];// sum the number of cookies sold per hour for each store 
+    }
+    td.textContent = sum; // td take the value sum 
+    tr.appendChild(td);// appendchild td to tr  
+    total += sum;// sum the total of the totals for  all stores 
 
-   }
-   td = document.createElement('td');// create  td 
-   td.textContent = total;// td take the value total
-   tr.appendChild(td);// ppendchild td to the tr 
+  }
+  td = document.createElement('td');// create  td 
+  td.textContent = total;// td take the value total
+  tr.appendChild(td);// ppendchild td to the tr 
 }
 
-function delateFooter (){
+function deleteFooter (){ // function that delate footer row
 
-var element = document. getElementById('table-footer');
-element.remove();
+  var element = document. getElementById('table-footer');
+  element.remove();
 
 }
 
 
 
-function handleFormSubmitted(event) {
+function handleFormSubmitted(event) {// function that submit the form
 
-   event.preventDefault();
-   var nameInput = document.getElementById('name').value;
+  event.preventDefault();
 
-
-   var minInput = parseInt(document.getElementById('min').value);
+  var nameInput = document.getElementById('name').value; 
 
 
-   var maxInput = parseInt(document.getElementById('max').value);
+  var minInput = parseInt(document.getElementById('min').value);
 
 
-   var avgInput = parseInt(document.getElementById('avg').value);
+  var maxInput = parseInt(document.getElementById('max').value);
 
 
-   var newStore = new Store(nameInput, minInput, maxInput, avgInput);
-   newStore.setcookies();
-   newStore.setTotal();
-   newStore.dataRender();
-
-   storesArray.push(newStore);
-   delateFooter ();
-   createFooter();
+  var avgInput = parseInt(document.getElementById('avg').value);
 
 
+  var newStore = new Store(nameInput, minInput, maxInput, avgInput);
+  newStore.setcookies();// call the function that create a rundom number of cookies 
+  newStore.setTotal();// call the function that gonna set the total by store
+  newStore.dataRender();// call the render function 
+
+  storesArray.push(newStore);// push the new store in to the stores array 
+  deleteFooter ();// call the function delete footer
+  createFooter();// call the function that create a new footer 
 
 
-   var form = document.getElementById("new-store");
-   form.reset();
+
+
+  var form = document.getElementById("new-store");
+  form.reset();
 }
 var formElement = document.getElementById('new-store');
 formElement.addEventListener('submit', handleFormSubmitted);
