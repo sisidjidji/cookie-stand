@@ -182,7 +182,7 @@ function handleFormSubmitted(event) {// function that submit the form
 
   storesArray.push(newStore);// push the new store in to the stores array 
   deleteFooter ();// call the function delete footer
-  createFooter();// call the function that create a new footer 
+  createFooter();// call the function that create a new footer
 
 
 
